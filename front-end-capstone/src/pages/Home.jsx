@@ -1,5 +1,18 @@
+
+import AlertBanner from "../components/AlertBanner";
+import CategoryBadge from "../components/CategoryBadge";
+import DogPrevList from "../components/DogPrevList";
+import Footer from "../components/Footer";
+
 function Home() {
-  return <h1>Home</h1>;
+  return (
+  <>
+  <AlertBanner />
+  <CategoryBadge />
+  <DogPrevList />
+  <Footer />
+</>
+  );
 }
 
 export default Home;

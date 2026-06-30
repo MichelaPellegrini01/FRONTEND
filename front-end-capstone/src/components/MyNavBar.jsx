@@ -15,8 +15,30 @@ function MyNavbar() {
     className="navbarLogo"
   />
         </Navbar.Brand>
+        <Navbar.Toggle aria-controls="mainNavbar" />
 
-        <Navbar.Toggle />
+<Navbar.Collapse id="mainNavbar">
+   <Nav className="me-auto">
+    <Nav.Link as={Link} to="/dogs">
+      Razze Pure
+    </Nav.Link>
+
+    <Nav.Link as={Link} to="/mixed-breed">
+      Meticci
+    </Nav.Link>
+  </Nav>
+  <Nav>
+    <Nav.Link as={Link} to="/login">
+  Accedi
+</Nav.Link>
+
+<Nav.Link as={Link} to="/register">
+  Registrati
+</Nav.Link>
+  </Nav>
+  <SearchBar />
+
+</Navbar.Collapse>
       </Container>
     </Navbar>
   );

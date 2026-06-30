@@ -1,0 +1,17 @@
+.searchBar {
+  width: 250px;
+}
+
+.searchBar .form-control {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 3px solid #007dfd;
+}
+
+.searchBar .form-control:hover,
+.searchBar .form-control:focus {
+  border-color: #ffb347;
+  box-shadow: 0 0 8px rgba(255, 179, 71, 0.4);
+  outline: none;
+
+}

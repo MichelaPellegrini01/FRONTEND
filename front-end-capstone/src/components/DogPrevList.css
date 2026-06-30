@@ -1,0 +1,17 @@
+.dogPrevList {
+  margin: 70px 0;
+}
+
+.dogPrevList h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.dogPrevListContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
