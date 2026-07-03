@@ -23,6 +23,11 @@
     transition: .2s ease;
 }
 
+.categoryBadge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10);
+}
+
 .compagnia {
   color: #fd42f4;
   border-color: #fd42f4;

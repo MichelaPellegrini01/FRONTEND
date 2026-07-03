@@ -1,0 +1,39 @@
+.dogList {
+  width: 90%;
+  margin: 40px auto;
+}
+
+.dogList h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.dogList p {
+   text-align: center;
+  color: #666;
+  margin-bottom: 35px;
+}
+
+.dogsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.dogList form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}

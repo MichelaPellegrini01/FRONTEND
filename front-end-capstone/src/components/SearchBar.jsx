@@ -1,15 +1,22 @@
 import Form from "react-bootstrap/Form";
 import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar({
+  className = "",
+  value,
+  onChange,
+}) {
   return (
-     <Form  className="searchBar">
+    <Form>
       <Form.Control
         type="search"
-        placeholder="Cerca una razza..." />
+        placeholder="Cerca una razza..."
+        className={`searchBar ${className}`}
+        value={value}
+onChange={onChange}
+      />
     </Form>
   );
 }
-
 
 export default SearchBar;

@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./DogCard.css";
 
-function DogCard({ title, image }) {
+function DogCard({ title, image, category, to }) {
+  
   return (
     <div className="dogCard">
       <img
@@ -12,8 +13,9 @@ function DogCard({ title, image }) {
 
       <div className="dogCardBody">
         <h3>{title}</h3>
+        <p>{category}</p>
 
-        <Link to="/dogs" className="dogCardButton">
+        <Link to={to} className="dogCardButton">
           Scopri di più
         </Link>
       </div>

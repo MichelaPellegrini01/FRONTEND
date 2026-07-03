@@ -16,21 +16,25 @@ function DogPrevList() {
         <DogCard
           title="Retriever"
           image={retriever}
+           to="/dogs"
         />
 
         <DogCard
           title="Pastori"
           image={pastori}
+           to="/dogs"
         />
 
         <DogCard
           title="Cani da compagnia"
           image={compagnia}
+           to="/dogs"
         />
 
         <DogCard
           title="Terrier"
           image={terrier}
+           to="/dogs"
         />
       </div>
     </section>

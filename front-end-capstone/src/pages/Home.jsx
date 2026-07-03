@@ -4,6 +4,7 @@ import CategoryBadge from "../components/CategoryBadge";
 import DogPrevList from "../components/DogPrevList";
 import Footer from "../components/Footer";
 
+
 function Home() {
   return (
   <>
