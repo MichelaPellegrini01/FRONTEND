@@ -1,12 +1,24 @@
 import "./DogDetail.css";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import dogs from "../data/dogs";
+//import dogs from "../data/dogs";
 
 function DogDetail() {
   const { id } = useParams();
-  const dog = dogs.find((dog) => dog.id === Number(id));
+  const [dog, setDog] = useState(null);
+  useEffect(() => {
+  fetch(`${import.meta.env.VITE_API_URL}/dogs/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setDog(data);
+    })
+    .catch((error) => {
+      console.error("Errore nel recupero del cane:", error);
+    });
+}, [id]);
+  
   if (!dog) {
-    return <h2>Razza non trovata.</h2>;
+    return <h2>Caricamento...</h2>;
   }
   return (
     <section className="dogDetail">
@@ -16,7 +28,7 @@ function DogDetail() {
       <p className="dogCategory">{dog.category}</p>
 
       <img
-        src={dog.image}
+        src={`/dogs/${dog.image}`}
         alt={dog.name}
         className="dogImage"
       />

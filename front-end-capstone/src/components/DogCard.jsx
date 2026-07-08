@@ -6,7 +6,7 @@ function DogCard({ title, image, category, to }) {
   return (
     <div className="dogCard">
       <img
-        src={image}
+        src={image.includes("categories") ? image : `/dogs/${image}`}
         alt={title}
         className="dogCardImage"
       />
