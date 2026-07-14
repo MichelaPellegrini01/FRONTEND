@@ -1,4 +1,5 @@
 import "./CategoryBadge.css";
+import { Link } from "react-router-dom";
 
 function CategoryBadge() {
   const categories = [
@@ -17,37 +18,53 @@ function CategoryBadge() {
   <h2>Esplora per categoria</h2>
 
   <div className="badgeContainer">
-    <button className="categoryBadge compagnia">
-      Cani da compagnia
-    </button>
+    <Link
+  to="/dogs?category=Cani da compagnia"
+  className="categoryBadge compagnia">
+  Cani da compagnia
+</Link>
 
-    <button className="categoryBadge lavoro">
-      Cani da lavoro
-    </button>
+   <Link
+  to="/dogs?category=Cani da lavoro"
+  className="categoryBadge lavoro">
+  Cani da lavoro
+</Link>
 
-    <button className="categoryBadge retriever">
-      Retriever
-    </button>
+   <Link
+  to="/dogs?category=Retriever"
+  className="categoryBadge retriever">
+  Retriever
+</Link>
 
-    <button className="categoryBadge pastori">
-      Pastori
-    </button>
+   <Link
+  to="/dogs?category=Pastori"
+  className="categoryBadge pastori">
+  Pastori
+</Link>
 
-    <button className="categoryBadge terrier">
-      Terrier
-    </button>
+   <Link
+  to="/dogs?category=Terrier"
+  className="categoryBadge terrier">
+  Terrier
+</Link>
 
-    <button className="categoryBadge molossoidi">
-      Molossoidi
-    </button>
+    <Link
+  to="/dogs?category=Molossoidi"
+  className="categoryBadge molossoidi">
+  Molossoidi
+</Link>
 
-    <button className="categoryBadge levrieri">
-      Levrieri
-    </button>
+   <Link
+  to="/dogs?category=Levrieri"
+  className="categoryBadge levrieri">
+  Levrieri
+</Link>
 
-    <button className="categoryBadge spitz">
-      Spitz
-    </button>
+   <Link
+  to="/dogs?category=Spitz"
+  className="categoryBadge spitz">
+  Spitz
+</Link>
   </div>
 </section>
   );

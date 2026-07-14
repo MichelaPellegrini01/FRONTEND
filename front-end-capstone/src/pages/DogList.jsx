@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import CategoryBadge from "../components/CategoryBadge";
 import DogCard from "../components/DogCard";
@@ -8,6 +9,8 @@ import "./DogList.css";
 function DogList() {
   const [search, setSearch] = useState("");
   const [dogs, setDogs] = useState([]);
+  const [searchParams] = useSearchParams();
+const category = searchParams.get("category");
   useEffect(() => {
   fetch(`${import.meta.env.VITE_API_URL}/dogs`)
     .then((res) => res.json())
@@ -18,10 +21,16 @@ function DogList() {
       console.error("Errore nel recupero dei cani:", error);
     });
 }, []);
-  const filteredDogs = dogs.filter((dog) =>
-  dog.name.toLowerCase().includes(search.toLowerCase()) ||
-  dog.category.toLowerCase().includes(search.toLowerCase())
-);
+const filteredDogs = dogs.filter((dog) => {
+  const searchOk =
+    dog.name.toLowerCase().includes(search.toLowerCase()) ||
+    dog.category.toLowerCase().includes(search.toLowerCase());
+
+  const categoryOk =
+    !category || dog.category === category;
+
+  return searchOk && categoryOk;
+});
   return (
     <section className="dogList">
 
@@ -35,7 +44,7 @@ function DogList() {
      value={search}
   onChange={(e) => setSearch(e.target.value)} />
 
-      <CategoryBadge />
+     <CategoryBadge />
 
       <div className="dogsContainer">
 
