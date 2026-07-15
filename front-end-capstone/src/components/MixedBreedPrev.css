@@ -1,0 +1,87 @@
+.mixedBreedPrev {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+
+  display: flex;
+  align-items: center;
+  gap: 50px;
+
+  background-color: white;
+  border-radius: 20px;
+
+  border: 2px solid rgba(0, 125, 253, 0.15);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.3s ease;
+
+  overflow: hidden;
+}
+
+.mixedBreedPrev:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mixedBreedPrevText {
+  flex: 1;
+  padding: 40px;
+}
+
+.mixedBreedPrevText h2 {
+  color: #007dfd;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.mixedBreedPrevText p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.mixedBreedButton {
+  display: inline-block;
+
+  background-color: #007dfd;
+  color: white;
+
+  text-decoration: none;
+
+  padding: 12px 24px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.mixedBreedButton:hover {
+  background-color: #ffb347;
+  color: white;
+}
+
+.mixedBreedPrevImage {
+   flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-right: 40px;
+}
+
+.mixedBreedPrevImage img {
+  width: 100%;
+  max-width: 480px;
+  height: 320px;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  display: block;
+}
