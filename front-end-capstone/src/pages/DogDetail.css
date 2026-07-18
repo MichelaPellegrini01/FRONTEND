@@ -59,3 +59,29 @@
   margin-bottom: 0;
   line-height: 1.6;
 }
+
+.commentsSection {
+  margin-top: 50px;
+}
+
+.commentsSection h2 {
+  margin-bottom: 20px;
+}
+
+.commentCard {
+  background-color: #f8f9fa;
+  border: 2px solid rgba(0, 125, 253, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.commentCard h4 {
+  margin: 0;
+  color: #007dfd;
+}
+
+.commentCard p {
+  margin-top: 10px;
+  line-height: 1.5;
+}

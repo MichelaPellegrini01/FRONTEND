@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 function DogDetail() {
   const { id } = useParams();
   const [dog, setDog] = useState(null);
+  const [comments, setComments] = useState([]);
   useEffect(() => {
   fetch(`${import.meta.env.VITE_API_URL}/dogs/${id}`)
     .then((res) => res.json())
@@ -15,8 +16,19 @@ function DogDetail() {
     .catch((error) => {
       console.error("Errore nel recupero del cane:", error);
     });
-}, [id]);
+
+fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`)
+  .then((res) => res.json())
+  .then((data) => {
+    setComments(data);
+  })
+  .catch((error) => {
+    console.error("Errore recupero commenti:", error);
+  });
   
+
+}, [id]);
+
   if (!dog) {
     return <h2>Caricamento...</h2>;
   }
@@ -76,6 +88,22 @@ function DogDetail() {
         </div>
 
       </div>
+
+      <div className="commentsSection">
+  <h2>Commenti</h2>
+
+  {comments.length === 0 ? (
+    <p>Nessun commento disponibile.</p>
+  ) : (
+    comments.map((comment) => (
+      <div key={comment._id} className="commentCard">
+        <h4>{comment.name}</h4>
+        <p>⭐ {comment.rating}/5</p>
+        <p>{comment.text}</p>
+      </div>
+    ))
+  )}
+</div>
 
     </section>
   );
