@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { BsPersonCircle  } from "react-icons/bs";
+import { MdAdminPanelSettings } from "react-icons/md";
 import SearchBar from "./SearchBar";
 import logo from "../assets/logo/logo.png";
 import "./MyNavbar.css";
 
 function MyNavbar() {
   const { user, logout } = useContext(AuthContext);
+  
   
   return (
     <Navbar expand="lg" className="customNavbar">
@@ -35,14 +37,25 @@ function MyNavbar() {
 <Nav>
   {user ? (
     <>
+      {user.isAdmin && (
+        <Nav.Link
+          as={Link}
+          to="/admin"
+          className="d-flex align-items-center"
+        >
+          <MdAdminPanelSettings className="me-2" />
+          Gestione
+        </Nav.Link>
+      )}
+
       <Nav.Link className="d-flex align-items-center">
         <BsPersonCircle className="me-2" />
         {user.name}
       </Nav.Link>
 
-   <Nav.Link onClick={logout}>
-  Logout
-</Nav.Link>
+      <Nav.Link onClick={logout}>
+        Logout
+      </Nav.Link>
     </>
   ) : (
     <>

@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import MixedBreed from "./pages/MixedBreed";
 import ErrorNotFound from "./pages/ErrorNotFound";
 import MyNavbar from "./components/MyNavbar";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dogs/:id" element={<DogDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/mixed-breed" element={<MixedBreed />} />
         <Route path="*" element={<ErrorNotFound />} />
       </Routes>
