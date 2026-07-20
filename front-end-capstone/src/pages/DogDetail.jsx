@@ -1,12 +1,21 @@
 import "./DogDetail.css";
-import { useEffect, useState } from "react";
+import { Form, Button, } from "react-bootstrap";
+import { useEffect, useState, useContext  } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { FaStar } from "react-icons/fa";
 //import dogs from "../data/dogs";
 
 function DogDetail() {
   const { id } = useParams();
+  const { user, token } = useContext(AuthContext);
+  console.log("USER:", user);
   const [dog, setDog] = useState(null);
   const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState({
+  rating: 5,
+  text: "",
+});
   useEffect(() => {
   fetch(`${import.meta.env.VITE_API_URL}/dogs/${id}`)
     .then((res) => res.json())
@@ -32,6 +41,44 @@ fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`)
   if (!dog) {
     return <h2>Caricamento...</h2>;
   }
+  const handleSubmitComment = async () => {
+  if (!newComment.text.trim()) {
+    alert("Scrivi un commento");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/comments`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: user.name,
+          rating: newComment.rating,
+          text: newComment.text,
+          dog: id,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Errore durante il salvataggio del commento");
+    }
+
+    const savedComment = await response.json();
+    setComments([...comments, savedComment]);
+    setNewComment({
+      rating: 5,
+      text: "",
+    });
+
+  } catch (error) {
+    console.error(error);
+  }
+};
   return (
     <section className="dogDetail">
 
@@ -98,15 +145,80 @@ fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`)
     comments.map((comment) => (
       <div key={comment._id} className="commentCard">
         <h4>{comment.name}</h4>
-        <p>⭐ {comment.rating}/5</p>
+        <p>  <FaStar className="text-warning me-1" />{comment.rating}/5</p>
         <p>{comment.text}</p>
       </div>
     ))
   )}
+  <hr />
+
+{user ? (
+  <div className="commentForm">
+    <h3>Scrivi una recensione</h3>
+
+  <label className="mb-2 d-block">
+  <FaStar className="text-warning me-2" />
+  Valutazione
+</label>
+
+<div className="d-flex align-items-center gap-2 mb-3">
+  <Form.Select
+    value={newComment.rating}
+    onChange={(e) =>
+      setNewComment({
+        ...newComment,
+        rating: Number(e.target.value),
+      })
+    }
+  >
+  
+
+    <option value={5}>5</option>
+    <option value={4}>4</option>
+    <option value={3}>3</option>
+    <option value={2}>2</option>
+    <option value={1}>1</option>
+  </Form.Select>
+
+  <span>/5</span>
+</div>
+  <Form.Group className="mb-3">
+  <Form.Label>Recensione</Form.Label>
+
+  <Form.Control
+    as="textarea"
+    rows={4}
+    placeholder="Scrivi un commento..."
+    value={newComment.text}
+    onChange={(e) =>
+      setNewComment({
+        ...newComment,
+        text: e.target.value,
+      })
+    }
+  />
+</Form.Group>
+
+<Button
+  className="admin-btn"
+  onClick={handleSubmitComment}
+>
+  Pubblica recensione
+</Button>
+  </div>
+) : (
+  <div className="commentLogin">
+    <p>
+      Vuoi lasciare un commento? Fai il login!
+    </p>
+  </div>
+)}
 </div>
 
     </section>
   );
 }
+
+
 
 export default DogDetail;

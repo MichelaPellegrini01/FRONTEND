@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./MixedBreedPrev.css";
+import { FaHeart } from "react-icons/fa";
 import previewImage from "../assets/mixedbreed/meticcihome.jpg"
 
 function MixedBreedPrev() {
@@ -8,7 +9,8 @@ function MixedBreedPrev() {
 
       <div className="mixedBreedPrevText">
 
-        <h2>❤️ Ogni cane merita amore</h2>
+        <h2>
+            <FaHeart className="me-2 text-danger" />Ogni cane merita amore</h2>
 
         <p>
           Dietro ogni meticcio si nasconde una storia fatta di speranza,

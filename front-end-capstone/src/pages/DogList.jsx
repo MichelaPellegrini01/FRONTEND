@@ -49,7 +49,7 @@ const filteredDogs = dogs.filter((dog) => {
       <div className="dogsContainer">
 
        {filteredDogs.map((dog) => {
-  console.log("DogList:", dog);
+ console.log("IMMAGINE:", dog.image);
 
   return (
     <DogCard

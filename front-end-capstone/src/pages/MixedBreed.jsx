@@ -1,4 +1,5 @@
 import "./MixedBreed.css";
+import { FaLightbulb } from "react-icons/fa";
 import heroImage from "../assets/mixedbreed/meticci.png";
 
 function MixedBreed() {
@@ -64,7 +65,7 @@ function MixedBreed() {
 
     <div className="historyCard">
 
-      <h3>💡 Lo sapevi?</h3>
+      <h3>  <FaLightbulb className="me-2 text-warning" />Lo sapevi?</h3>
 
       <p>
         Le razze canine moderne sono nate grazie a secoli di selezione e

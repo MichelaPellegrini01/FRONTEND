@@ -1,8 +1,8 @@
 import { Container, Card, Button, Form, Row, Col } from "react-bootstrap";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef  } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrashAlt } from "react-icons/fa";
 import "./Admin.css";
 
 function Admin() {
@@ -23,6 +23,7 @@ function Admin() {
   });
   const [dogs, setDogs] = useState([]);
   const [editingDog, setEditingDog] = useState(null);
+  const formRef = useRef(null);
 
 const handleChange = (e) => {
   const { name, value } = e.target;
@@ -120,6 +121,38 @@ const handleEdit = (dog) => {
   });
 
   setShowForm(true);
+  setTimeout(() => {
+  formRef.current?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}, 100);
+};
+
+const handleDelete = async (id) => {
+  const confirmDelete = window.confirm(
+    "Sei sicuro di voler eliminare questa razza?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/dogs/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Errore durante l'eliminazione");
+    }
+
+    setDogs(dogs.filter((dog) => dog._id !== id));
+
+  } catch (error) {
+    console.error(error);
+  }
 };
 
     return (
@@ -150,7 +183,7 @@ const handleEdit = (dog) => {
                     </Button>
 
                     {showForm && (
-                        <div className="form-container">
+                        <div className="form-container" ref={formRef}>
 
                             <h4>Aggiungi una nuova razza!</h4>
 
@@ -350,17 +383,25 @@ const handleEdit = (dog) => {
       <div className="d-flex gap-2">
        <Button
   variant="warning"
-  onClick={() => handleEdit(dog)}>
+  onClick={() => handleEdit(dog)}
+>
+  <FaEdit className="me-2" />
   Modifica
 </Button>
 
-        <Button variant="danger">
-          Elimina
-        </Button>
+       <Button
+  variant="danger"
+  onClick={() => handleDelete(dog._id)}
+>
+  <FaTrashAlt className="me-2" />
+  Elimina
+</Button>
       </div>
     </Card.Body>
   </Card>
 ))}
+
+
 
                 </Card.Body>
 
