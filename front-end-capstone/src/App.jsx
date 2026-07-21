@@ -6,8 +6,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MixedBreed from "./pages/MixedBreed";
 import ErrorNotFound from "./pages/ErrorNotFound";
-import MyNavbar from "./components/MyNavbar";
+import MyNavbar from "./components/MyNavBar";
 import Admin from "./pages/Admin";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/mixed-breed" element={<MixedBreed />} />
         <Route path="*" element={<ErrorNotFound />} />
       </Routes>
+      <Footer/>
     </>
   );
 }

@@ -13,7 +13,6 @@ function Home() {
   <CategoryBadge />
   <DogPrevList />
   <MixedBreedPrev />
-  <Footer />
 </>
   );
 }

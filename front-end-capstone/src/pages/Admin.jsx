@@ -21,6 +21,7 @@ function Admin() {
   care: "",
   origin: "",
   });
+  const [selectedImage, setSelectedImage] = useState(null);
   const [dogs, setDogs] = useState([]);
   const [editingDog, setEditingDog] = useState(null);
   const formRef = useRef(null);
@@ -37,12 +38,37 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const dogData = {
-    ...formData,
-    temperament: formData.temperament
-      .split(",")
-      .map((t) => t.trim()),
-  };
+  let imageUrl = formData.image;
+
+if (selectedImage) {
+  const imageFormData = new FormData();
+
+  imageFormData.append("image", selectedImage);
+
+  const uploadResponse = await fetch(
+    `${import.meta.env.VITE_API_URL}/upload`,
+    {
+      method: "POST",
+      body: imageFormData,
+    }
+  );
+
+  if (!uploadResponse.ok) {
+    throw new Error("Errore upload immagine");
+  }
+
+  const uploadResult = await uploadResponse.json();
+
+  imageUrl = uploadResult.imageUrl;
+}
+
+const dogData = {
+  ...formData,
+  image: imageUrl,
+  temperament: formData.temperament
+    .split(",")
+    .map((t) => t.trim()),
+};
 
   try {
     const url = editingDog
@@ -214,12 +240,12 @@ const handleDelete = async (id) => {
         value={formData.category}
         onChange={handleChange} >
         <option value="">Seleziona il gruppo</option>
-        <option value="Compagnia">Cani da compagnia</option>
-        <option value="Lavoro">Cani da lavoro</option>
-        <option value="Levriero">Levrieri</option>
-        <option value="Molossoide">Molossoidi</option>
+        <option value="Cani da compagnia">Cani da compagnia</option>
+        <option value="Cani da lavoro">Cani da lavoro</option>
+        <option value="Levrieri">Levrieri</option>
+        <option value="Molossoidi">Molossoidi</option>
         <option value="Retriever">Retriever</option>
-        <option value="Pastore">Pastori</option>
+        <option value="Pastori">Pastori</option>
         <option value="Terrier">Terrier</option>
         <option value="Spitz">Spitz</option>
       </Form.Select>
@@ -324,17 +350,17 @@ const handleDelete = async (id) => {
     onChange={handleChange}
   />
 </Form.Group>
+
 <Form.Group className="mb-4">
-  <Form.Label>URL Immagine</Form.Label>
+  <Form.Label>Immagine</Form.Label>
 
   <Form.Control
-    type="text"
-    name="image"
-    value={formData.image}
-    onChange={handleChange}
-    placeholder="https://..."
+    type="file"
+    accept="image/*"
+    onChange={(e) => setSelectedImage(e.target.files[0])}
   />
 </Form.Group>
+
 <Form.Group className="mb-3">
   <Form.Label>Origini</Form.Label>
 

@@ -5,11 +5,15 @@ function DogCard({ title, image, category, to }) {
   
   return (
     <div className="dogCard">
-      <img
-        src={image.includes("categories") ? image : `/dogs/${image}`}
-        alt={title}
-        className="dogCardImage"
-      />
+    <img
+  src={
+    image.startsWith("http") || image.startsWith("/")
+      ? image
+      : `/dogs/${image}`
+  }
+  alt={title}
+  className="dogCardImage"
+/>
 
       <div className="dogCardBody">
         <h3>{title}</h3>

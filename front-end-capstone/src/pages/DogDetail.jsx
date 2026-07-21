@@ -86,11 +86,11 @@ fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`)
 
       <p className="dogCategory">{dog.category}</p>
 
-      <img
-        src={`/dogs/${dog.image}`}
-        alt={dog.name}
-        className="dogImage"
-      />
+     <img
+  src={dog.image.startsWith("http") ? dog.image : `/dogs/${dog.image}`}
+  alt={dog.name}
+  className="dogImage"
+/>
 
       <div className="dogInfo">
 
@@ -154,7 +154,7 @@ fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`)
 
 {user ? (
   <div className="commentForm">
-    <h3>Scrivi una recensione</h3>
+    <h3>Scrivi un commento</h3>
 
   <label className="mb-2 d-block">
   <FaStar className="text-warning me-2" />
@@ -183,7 +183,7 @@ fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`)
   <span>/5</span>
 </div>
   <Form.Group className="mb-3">
-  <Form.Label>Recensione</Form.Label>
+  <Form.Label>Commento</Form.Label>
 
   <Form.Control
     as="textarea"
