@@ -9,7 +9,6 @@ import { FaStar } from "react-icons/fa";
 function DogDetail() {
   const { id } = useParams();
   const { user, token } = useContext(AuthContext);
-  console.log("USER:", user);
   const [dog, setDog] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({

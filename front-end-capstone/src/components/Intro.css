@@ -1,0 +1,90 @@
+.intro {
+    position: fixed;
+    inset: 0;
+
+    background: #007dfd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.introContent {
+    text-align: center;
+    color: white;
+}
+
+.introLogo {
+    width: 170px;
+    margin-bottom: 20px;
+
+    animation: fadeIn 0.8s ease;
+}
+
+.intro h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    opacity: .9;
+    margin-bottom: 50px;
+}
+
+.pawContainer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.paw {
+    font-size: 30px;
+    color: #f59e0b;
+
+    animation: walk 1.2s infinite;
+}
+
+.paw2 {
+    animation-delay: .2s;
+}
+
+.paw3 {
+    animation-delay: .4s;
+}
+
+.paw4 {
+    animation-delay: .6s;
+}
+
+@keyframes walk {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}

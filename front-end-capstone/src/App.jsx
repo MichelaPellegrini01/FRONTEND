@@ -9,8 +9,24 @@ import ErrorNotFound from "./pages/ErrorNotFound";
 import MyNavbar from "./components/MyNavBar";
 import Admin from "./pages/Admin";
 import Footer from "./components/Footer";
+import Intro from "./components/Intro";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowIntro(false);
+  }, 2000);
+
+  return () => clearTimeout(timer);
+}, []);
+
+if (showIntro) {
+  return <Intro />;
+}
+
   return (
     <>
       <MyNavbar />

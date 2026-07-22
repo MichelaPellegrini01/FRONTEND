@@ -49,9 +49,7 @@ const filteredDogs = dogs.filter((dog) => {
       <div className="dogsContainer">
 
        {filteredDogs.map((dog) => {
- console.log("IMMAGINE:", dog.image);
-
-  return (
+ return (
     <DogCard
      key={dog._id}
       title={dog.name}

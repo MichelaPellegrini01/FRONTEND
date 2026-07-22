@@ -24,3 +24,30 @@ body {
 .customNavbar .nav-link:hover {
   color: #ffb347;
 }
+
+.navbarPaw {
+    color: #f59e0b;
+    margin: 0 18px;
+    font-size: 22px;
+animation: pawHello 5s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes pawHello {
+
+    0%, 60%, 100% {
+        transform: rotate(0deg);
+    }
+
+    70% {
+        transform: rotate(20deg);
+    }
+
+    80% {
+        transform: rotate(-20deg);
+    }
+
+    90% {
+        transform: rotate(15deg);
+    }
+}

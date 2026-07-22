@@ -6,6 +6,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { MdAdminPanelSettings } from "react-icons/md";
 import SearchBar from "./SearchBar";
 import logo from "../assets/logo/logo.png";
+import { FaPaw } from "react-icons/fa";
 import "./MyNavBar.css";
 
 function MyNavbar() {
@@ -37,38 +38,45 @@ function MyNavbar() {
               Meticci
             </Link>
           </Nav>
+          <div className="navbarPaws">
+            <FaPaw className="navbarPaw paw1" />
+          </div>
           <Nav>
-         {user && (
-  <>
-    {user.isAdmin && (
-      <Nav.Link as={Link} to="/admin">
-        Gestione
-      </Nav.Link>
-    )}
+            {user && (
+              <>
+                {user.isAdmin && (
+                  <Nav.Link as={Link} to="/admin">
+                    Gestione
+                  </Nav.Link>
+                )}
 
-    <Nav.Link>
-      {user.name}
-    </Nav.Link>
+                <Nav.Link>
+                  {user.name}
+                </Nav.Link>
 
-   <Nav.Link onClick={handleLogout}>
-  Logout
-</Nav.Link>
-  </>
-)}
+                <Nav.Link onClick={handleLogout}>
+                  Logout
+                </Nav.Link>
+              </>
+            )}
 
-{!user && (
-  <>
-    <Nav.Link as={Link} to="/login">
-      Accedi
-    </Nav.Link>
+            {!user && (
+              <>
+                <Nav.Link as={Link} to="/login">
+                  Accedi
+                </Nav.Link>
 
-    <Nav.Link as={Link} to="/register">
-      Registrati
-    </Nav.Link>
-  </>
-)}
+                <Nav.Link as={Link} to="/register">
+                  Registrati
+                </Nav.Link>
+              </>
+            )}
           </Nav>
           <SearchBar />
+
+          <div className="navbarPaws">
+            <FaPaw className="navbarPaw paw1" />
+          </div>
 
         </Navbar.Collapse>
       </Container>

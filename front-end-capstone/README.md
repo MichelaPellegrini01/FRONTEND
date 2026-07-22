@@ -1,16 +1,60 @@
-# React + Vite
+#  Happy Tail - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend della web application Happy Tail, sviluppata con React e Vite.
+L'applicazione permette agli utenti di consultare un catalogo di razze canine, visualizzarne le caratteristiche principali, leggere e pubblicare recensioni e, per gli amministratori, gestire il catalogo tramite un pannello dedicato.
 
-Currently, two official plugins are available:
+## Tecnologie utilizzate
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- Vite
+- React Router
+- React Bootstrap
+- CSS
+- React Icons
+- Framer Motion
 
-## React Compiler
+## Funzionalità
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Home page
+- Catalogo delle razze
+- Scheda dettagliata di ogni razza
+- Ricerca delle razze
+- Sezione dedicata ai meticci
+- Login e registrazione
+- Area amministratore
+- CRUD delle razze canine
+- Upload immagini tramite Cloudinary
+- Responsive Design
 
-## Expanding the ESLint configuration
+## Installazione
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Installare le dipendenze:
+
+```bash
+npm install
+```
+
+Avviare il progetto:
+
+```bash
+npm run dev
+```
+
+## Variabili d'ambiente
+
+Creare un file `.env` nella root del progetto.
+
+```env
+VITE_API_URL=http://localhost:3001
+```
+
+## Backend
+
+Il backend dell'applicazione è disponibile nel repository dedicato:
+
+https://github.com/MichelaPellegrini01/BACKEND
+
+## Autore
+
+Realizzato da Michela Pellegrini.
+GitHub: https://github.com/MichelaPellegrini01
