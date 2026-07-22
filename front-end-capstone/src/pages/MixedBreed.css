@@ -180,7 +180,7 @@
 
     border-radius:30px;
 
-    padding:60px;
+    padding:30px;
 
 }
 
@@ -214,4 +214,67 @@
 
     color:#0b4f94;
 
+}
+
+@media (max-width: 768px) {
+
+  .heroSection {
+    height: 520px;
+    background-position: 70% center;
+  }
+
+  .heroOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.90),
+      rgba(255,255,255,0.35)
+    );
+  }
+
+  .heroText {
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .heroText h1 {
+    font-size: 3rem;
+  }
+
+  .heroText h2 {
+    font-size: 1.8rem;
+  }
+
+  .heroText p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+.historyContent {
+
+    flex-direction: column;
+
+}
+
+.historyCard{
+
+    width:100%;
+
+} 
+ .historyText h2{
+
+    font-size:2rem;
+
+}
+
+.valueSection h2{
+
+    font-size:2rem;
+
+}
+
+.adoptionContent h2{
+
+    font-size:2rem;
+
+} 
 }

@@ -85,3 +85,25 @@
   margin-top: 10px;
   line-height: 1.5;
 }
+
+@media (max-width: 768px) {
+
+  .dogDetail h1 {
+    font-size: 2rem;
+  }
+
+  .dogStats {
+    grid-template-columns: 1fr;
+  }
+
+  .dogStats div {
+    padding: 18px;
+  }
+
+  .dogInfo h2,
+  .detailCard h2,
+  .commentsSection h2 {
+    font-size: 1.6rem;
+  }
+
+}
