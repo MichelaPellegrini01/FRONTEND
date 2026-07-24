@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -29,13 +30,16 @@ function Register() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Registrazione completata!");
-        setName("");
-        setEmail("");
-        setPassword("");
-      } else {
-        alert(data.message);
-      }
+
+  alert("Registrazione completata!");
+
+  navigate("/login");
+
+} else {
+
+  alert(data.message);
+
+}
     } catch (error) {
       console.log(error);
       alert("Errore del server");

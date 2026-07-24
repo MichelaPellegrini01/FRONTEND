@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "./Auth.css";
 
 function Login() {
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const navigate = useNavigate();
 const { setUser, setToken } = useContext(AuthContext);
 
 async function handleSubmit(e) {
@@ -30,18 +31,19 @@ async function handleSubmit(e) {
 
     const data = await response.json();
 
-  if (response.ok) {
+ if (response.ok) {
   localStorage.setItem("token", data.token);
   localStorage.setItem("user", JSON.stringify(data.user));
 
   setToken(data.token);
   setUser(data.user);
-  
 
   alert("Login effettuato!");
+
+  navigate("/");
 } else {
-      alert(data.message);
-    }
+  alert(data.message);
+}
   } catch (error) {
     console.log(error);
     alert("Errore del server");
