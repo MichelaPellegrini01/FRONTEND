@@ -46,8 +46,6 @@ https://happy-tail-iota.vercel.app
 
 ## Variabili d'ambiente
 
-Creare un file `.env` nella root del progetto.
-
 ```env
 VITE_API_URL=https://happy-tail-backend.onrender.com
 ```
